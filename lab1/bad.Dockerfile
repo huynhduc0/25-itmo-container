@@ -1,14 +1,17 @@
 # Bad Dockerfile
-FROM jupyterhub/jupyterhub:3.1.1
+FROM python:3.9-slim
 
 # Install additional dependencies
-RUN apt update && apt -y install python3-dev git
+RUN apt-get update && apt-get install -y python3-dev gcc
 
 # Install unnecessary packages
-RUN apt -y install vim nano
+RUN apt-get install -y vim nano
 
 # Arbitrary working directory
-WORKDIR jupyter
+WORKDIR /app
+
+# Copy all files
+COPY . /app
 
 # Improper entrypoint
-ENTRYPOINT jupyterhub --log-level=DEBUG
+ENTRYPOINT ["python", "app.py"]

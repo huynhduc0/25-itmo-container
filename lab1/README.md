@@ -5,7 +5,7 @@
 - [English](#dockerfiles-bad-and-good-practices)
 
 ## Обзор
-Этот репозиторий содержит два Dockerfile для простого Python-приложения. Один демонстрирует плохие практики, а другой иллюстрирует хорошие практики, устраняя проблемы в плохом Dockerfile.
+Этот репозиторий содержит два Dockerfile для простого Flask-приложения. Один демонстрирует плохие практики, а другой иллюстрирует хорошие практики, устраняя проблемы в плохом Dockerfile.
 
 ---
 
@@ -46,8 +46,8 @@
 ```bash
 @huynhduc0 ➜ /workspaces/25-itmo-container/lab1 (main) $ docker images
 REPOSITORY        TAG       IMAGE ID       CREATED              SIZE
-good-jupyterhub   latest    3a2cc81d7b70   About a minute ago   536MB
-bad-jupyterhub    latest    fad2e9419855   4 minutes ago        632MB
+bad-jupyterhub    latest    2671657e83e8   6 seconds ago        491MB
+good-jupyterhub   latest    0c28388618fa   About a minute ago   300MB
 ```
 
 ---
@@ -79,7 +79,7 @@ bad-jupyterhub    latest    fad2e9419855   4 minutes ago        632MB
 - [English](#dockerfiles-bad-and-good-practices)
 
 ## Overview
-This repository contains two Dockerfiles for a simple Python application. One demonstrates bad practices, while the other illustrates good practices by addressing the issues in the bad Dockerfile.
+This repository contains two Dockerfiles for a simple Flask application. One demonstrates bad practices, while the other illustrates good practices by addressing the issues in the bad Dockerfile.
 
 ---
 
@@ -120,8 +120,8 @@ This repository contains two Dockerfiles for a simple Python application. One de
 ```bash
 @huynhduc0 ➜ /workspaces/25-itmo-container/lab1 (main) $ docker images
 REPOSITORY        TAG       IMAGE ID       CREATED              SIZE
-good-jupyterhub   latest    3a2cc81d7b70   About a minute ago   536MB
-bad-jupyterhub    latest    fad2e9419855   4 minutes ago        632MB
+bad-jupyterhub    latest    2671657e83e8   6 seconds ago        491MB
+good-jupyterhub   latest    0c28388618fa   About a minute ago   300MB
 ```
 
 ---

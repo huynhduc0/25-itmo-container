@@ -1,14 +1,18 @@
 # Use a specific, lightweight base image
-FROM jupyterhub/jupyterhub:3.1.1
+FROM python:3.9-slim
 
 # Set a meaningful working directory
-WORKDIR /srv/jupyterhub
+WORKDIR /app
+
+# Copy only necessary files
+COPY app.py /app/
 
 # Install only necessary dependencies and clean up cache
 RUN apt-get update && \
-    apt-get install -y python3-dev git && \
+    apt-get install -y --no-install-recommends gcc && \
+    pip install flask && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
 # Use CMD for flexibility with default behavior
-CMD ["jupyterhub", "--log-level=DEBUG"]
+CMD ["python", "app.py"]
