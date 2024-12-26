@@ -1,0 +1,45 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: flask_app
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_ENV=development
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_NAME=mydatabase
+      - DB_USER=myuser
+      - DB_PASSWORD=mysecretpassword
+    depends_on:
+      - db
+    networks:
+      - app_network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000"]
+      interval: 30s
+      retries: 3
+
+  db:
+    image: postgres:13
+    container_name: postgres_db
+    environment:
+      - POSTGRES_USER=myuser
+      - POSTGRES_PASSWORD=mysecretpassword
+      - POSTGRES_DB=mydatabase
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge
+
+volumes:
+  db_data:
