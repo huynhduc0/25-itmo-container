@@ -54,6 +54,7 @@
 
 ![Pods](./image/pod.png)
 ##### flask pod: 2 контейнера - init-скрипт и flask-приложение
+![Pods and Services Running](./image/pod-logs-initdb.png)
 ![Pods and Services Running](./image/flask-app-container.png)
 ![Pods fk](./image/flask-app-servicemap.png)
 ##### Postgres
@@ -126,6 +127,7 @@ Pods:
 
 ![Pods](./image/pod.png)
 ##### flask pod: 2 containers - init script and flask app
+![Pods and Services Running](./image/pod-logs-initdb.png)
 ![Pods and Services Running](./image/flask-app-container.png)
 ![Pods fk](./image/flask-app-servicemap.png)
 ##### Postgres
