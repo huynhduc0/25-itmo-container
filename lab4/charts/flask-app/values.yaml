@@ -1,0 +1,24 @@
+app:
+  image:
+    repository: vanlahuynhduc/flask-app
+    tag: latest
+    pullPolicy: IfNotPresent
+  ports:
+    - 5000
+  env:
+    FLASK_APP: app.py
+    FLASK_ENV: development
+    DB_HOST: postgres-db.default.svc.cluster.local
+    DB_PORT: "5432"
+
+init_db:
+  image:
+    repository: postgres
+    tag: "13"
+    pullPolicy: IfNotPresent
+
+db:
+  image:
+    repository: postgres
+    tag: "13"
+    pullPolicy: IfNotPresent

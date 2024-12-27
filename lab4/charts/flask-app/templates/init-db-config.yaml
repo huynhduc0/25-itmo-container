@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: init-db-configmap
+  labels:
+    app: flask-app
+data:
+  init_db.sh: |-
+    #!/bin/bash
+    echo "Connecting to PostgreSQL at hostname: postgres-db"
+
+    # Wait for the PostgreSQL database to be ready
+    until pg_isready -h postgres-db.default.svc.cluster.local -U $DB_USER; do
+      echo "Waiting for PostgreSQL to be ready..."
+      sleep 2
+    done
+
+    # Create the table if it doesn't exist
+    PGPASSWORD=$DB_PASSWORD psql -h postgres-db.default.svc.cluster.local -U $DB_USER -d $DB_NAME -c "CREATE TABLE IF NOT EXISTS example (id SERIAL PRIMARY KEY, data TEXT);"
+
+    # Insert initial data into the table
+    PGPASSWORD=$DB_PASSWORD psql -h postgres-db.default.svc.cluster.local -U $DB_USER -d $DB_NAME -c "INSERT INTO example (data) VALUES ('Sample Data 1'), ('Sample Data 2'), ('Sample Data 3');"
+
+    echo "Database initialized and data inserted."
+
